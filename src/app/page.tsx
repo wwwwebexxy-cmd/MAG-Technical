@@ -91,15 +91,30 @@ export default function HomePage() {
               <p>Choose a service to ask about, or call and describe the job in your own words.</p>
             </div>
 
-            <div className="service-list">
+            <div className="service-cards">
               {services.map((service, index) => (
-                <article className="service-row reveal" key={service.title} style={{ "--row-index": index } as CSSProperties}>
-                  <div className="service-row__icon"><ServiceIcon name={service.icon} /></div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <a className="service-row__link" href={whatsappHref} target="_blank" rel="noreferrer" aria-label={`Ask MAG about ${service.title}`}>
-                    <UiIcon name="arrow-up-right" />
-                  </a>
+                <article className="service-card reveal" key={service.title} style={{ "--reveal-index": index } as CSSProperties}>
+                  <div className="service-card__image">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw"
+                      className="service-card__photo"
+                    />
+                    <span className="service-card__index">0{index + 1}</span>
+                  </div>
+                  <div className="service-card__content">
+                    <p className="service-card__label">MAG Technical Services</p>
+                    <h3>{service.title}</h3>
+                    <p className="service-card__description">{service.description}</p>
+                    <div className="service-card__footer">
+                      <span>Ask about this service</span>
+                      <a className="service-card__link" href={whatsappHref} target="_blank" rel="noreferrer" aria-label={`Ask MAG about ${service.title}`}>
+                        <UiIcon name="arrow-up-right" />
+                      </a>
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>

@@ -20,33 +20,38 @@ export const navigation = [
 
 export const services = [
   {
-    title: "A/C Service",
-    description: "Air-conditioner service for all brands.",
+    title: "A/C Service, Maintenance & Installation",
+    description: "Air-conditioner service for all brands, plus installation and ongoing maintenance.",
     icon: "air",
-  },
-  {
-    title: "A/C Maintenance & Installation",
-    description: "Installation and ongoing maintenance for your cooling system.",
-    icon: "air",
+    image: "/images/ac-technician-dubai.png",
+    imageAlt: "A technician servicing a split air conditioner in a Dubai apartment",
   },
   {
     title: "Electrical Work",
     description: "Electrical work for homes and workspaces.",
     icon: "electrical",
+    image: "/images/electrical-work.png",
+    imageAlt: "An electrician testing a residential electrical panel",
   },
   {
     title: "Plumbing Work",
     description: "Plumbing support for everyday property needs.",
     icon: "plumbing",
+    image: "/images/plumbing-work.png",
+    imageAlt: "A plumber checking pipe fittings beneath a kitchen sink",
   },
   {
     title: "Painting Work",
     description: "Painting work for your property.",
     icon: "painting",
+    image: "/images/painting-work.png",
+    imageAlt: "A painter applying a fresh coat of paint to an interior wall",
   },
   {
     title: "All Maintenance Work",
     description: "General maintenance for homes and workspaces.",
     icon: "maintenance",
+    image: "/images/general-maintenance.png",
+    imageAlt: "A maintenance technician adjusting a door handle",
   },
 ] as const;
