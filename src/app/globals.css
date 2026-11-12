@@ -131,35 +131,42 @@ button:focus-visible {
 }
 
 .brand {
+  --brand-art-width: 260px;
+  --brand-icon-width: 46px;
+  --brand-word-width: 210px;
+  --brand-art-height: 60px;
+  --brand-art-y: -8px;
+  --brand-word-x: -46px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 2px;
   width: auto;
   flex: 0 0 auto;
 }
 
 .brand__mark {
   display: block;
-  width: 66px;
-  height: 58px;
-  flex: 0 0 58px;
-  background-image: url("/images/mag-logo-transparent.png");
+  width: var(--brand-icon-width);
+  height: var(--brand-art-height);
+  flex: 0 0 var(--brand-icon-width);
+  background-image: url("/images/mag-logo-horizontal.png");
   background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 200% auto;
+  background-position: 0 var(--brand-art-y);
+  background-size: var(--brand-art-width) auto;
 }
 
 .brand__wordmark {
   display: block;
-  width: 150px;
-  height: 68px;
-  flex: 0 0 150px;
-  background-image: url("/images/mag-logo-transparent.png");
+  width: var(--brand-word-width);
+  height: var(--brand-art-height);
+  flex: 0 0 var(--brand-word-width);
+  background-image: url("/images/mag-logo-horizontal.png");
   background-repeat: no-repeat;
-  background-position: center -71px;
-  background-size: 150px auto;
+  background-position: var(--brand-word-x) var(--brand-art-y);
+  background-size: var(--brand-art-width) auto;
 }
 
 .primary-nav {
@@ -904,9 +911,7 @@ button:focus-visible {
 }
 
 .brand--footer .brand__mark {
-  width: 66px;
-  height: 58px;
-  flex-basis: 58px;
+  background-size: var(--brand-art-width) auto;
 }
 
 .footer-brand-block > p {
@@ -1044,22 +1049,12 @@ button:focus-visible {
   }
 
   .brand {
-    gap: 7px;
-  }
-
-  .brand__mark {
-    width: 49px;
-    height: 43px;
-    flex-basis: 43px;
-    background-size: 200% auto;
-  }
-
-  .brand__wordmark {
-    width: 110px;
-    height: 50px;
-    flex-basis: 110px;
-    background-position: center -52px;
-    background-size: 110px auto;
+    --brand-art-width: 200px;
+    --brand-icon-width: 36px;
+    --brand-word-width: 162px;
+    --brand-art-height: 46px;
+    --brand-art-y: -6px;
+    --brand-word-x: -36px;
   }
 
   .menu-toggle {
@@ -1299,18 +1294,13 @@ button:focus-visible {
     gap: 8px;
   }
 
-  .brand__mark {
-    width: 42px;
-    height: 37px;
-    flex-basis: 37px;
-  }
-
-  .brand__wordmark {
-    width: 94px;
-    height: 43px;
-    flex-basis: 94px;
-    background-position: center -45px;
-    background-size: 94px auto;
+  .brand {
+    --brand-art-width: 180px;
+    --brand-icon-width: 32px;
+    --brand-word-width: 146px;
+    --brand-art-height: 42px;
+    --brand-art-y: -5px;
+    --brand-word-x: -32px;
   }
 
   .header-call {
@@ -1450,6 +1440,34 @@ button:focus-visible {
     justify-content: center;
     gap: 7px;
     padding-block: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header__inner {
+    gap: 6px;
+  }
+
+  .brand {
+    --brand-art-width: 150px;
+    --brand-icon-width: 27px;
+    --brand-word-width: 121px;
+    --brand-art-height: 35px;
+    --brand-art-y: -4px;
+    --brand-word-x: -27px;
+  }
+
+  .header-call {
+    padding-left: 6px;
+  }
+
+  .header-call strong {
+    font-size: 9px;
+  }
+
+  .menu-toggle {
+    gap: 5px;
+    padding-left: 6px;
   }
 }
 
