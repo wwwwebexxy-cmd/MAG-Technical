@@ -910,6 +910,11 @@ button:focus-visible {
   filter: brightness(0) invert(1);
 }
 
+.brand--footer {
+  width: fit-content;
+  justify-content: flex-start;
+}
+
 .brand--footer .brand__mark {
   background-size: var(--brand-art-width) auto;
 }
