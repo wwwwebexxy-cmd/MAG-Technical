@@ -1,15 +1,17 @@
 export const contact = {
   name: "Mr Ambrose",
   company: "MAG Technical Services",
-  phone: "0559954323",
-  phoneHref: "tel:+971559954323",
+  phones: [
+    { number: "055 995 4323", href: "tel:+971559954323", whatsappHref: "https://wa.me/971559954323?text=Hello%20MAG%20Technical%20Services%2C%20I%20have%20a%20service%20enquiry." },
+    { number: "056 168 9702", href: "tel:+971561689702", whatsappHref: "https://wa.me/971561689702?text=Hello%20MAG%20Technical%20Services%2C%20I%20have%20a%20service%20enquiry." },
+  ],
   email: "ambrosearakkal@gmail.com",
   location: "Quoz, Dubai",
   facebook: "https://www.facebook.com/share/18qx9N4SPt/",
 } as const;
 
 export const whatsappHref =
-  "https://wa.me/971559954323?text=Hello%20MAG%20Technical%20Services%2C%20I%20have%20a%20service%20enquiry.";
+  contact.phones[0].whatsappHref;
 
 export const navigation = [
   { label: "Home", href: "#home" },

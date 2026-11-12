@@ -29,12 +29,24 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>
           ))}
-          <a className="primary-nav__phone" href={contact.phoneHref} onClick={() => setMenuOpen(false)}>
-            <span>Call us</span><strong>{contact.phone}</strong>
-          </a>
+          {contact.phones.map((phone) => (
+            <a className="primary-nav__phone" href={phone.href} key={phone.number} onClick={() => setMenuOpen(false)}>
+              <span>Call us</span><strong>{phone.number}</strong>
+            </a>
+          ))}
         </nav>
 
-        <a className="header-call" href={contact.phoneHref}><span>Call us</span><strong>{contact.phone}</strong></a>
+        <div className="header-call">
+          <span>Call us</span>
+          <div className="header-call__numbers">
+            {contact.phones.map((phone, index) => (
+              <span className="header-call__number" key={phone.number}>
+                {index > 0 && <span aria-hidden="true">·</span>}
+                <a href={phone.href}>{phone.number}</a>
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );

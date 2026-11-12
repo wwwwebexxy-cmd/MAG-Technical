@@ -2,8 +2,10 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ServiceCarousel } from "@/components/service-carousel";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { ServiceIcon, UiIcon } from "@/components/icons";
-import { contact, services, whatsappHref } from "@/lib/site-data";
+import { contact, whatsappHref } from "@/lib/site-data";
 
 const whyChooseItems = [
   {
@@ -48,15 +50,26 @@ export default function HomePage() {
       <div className="topline">
         <div className="container topline__inner">
           <p><span className="status-dot" /> Technical services in Quoz, Dubai</p>
-          <a href={contact.phoneHref}>Call {contact.phone}</a>
+          <div className="topline__calls">
+            <span className="topline__calls-label">Call</span>
+            {contact.phones.map((phone, index) => (
+              <span key={phone.number}>
+                {index > 0 && <span aria-hidden="true">·</span>}
+                <a href={phone.href}>{phone.number}</a>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
       <SiteHeader />
+      <ScrollReveal />
 
       <main id="main-content">
         <section className="hero" id="home" aria-labelledby="hero-title">
-          <Image src="/images/ac-technician-dubai.png" alt="" fill priority sizes="100vw" className="hero__image" />
+          <div className="hero__visual" aria-hidden="true">
+            <Image src="/images/ac-technician-dubai.png" alt="" fill priority sizes="(max-width: 760px) 100vw, 58vw" className="hero__image" />
+          </div>
           <div className="container hero__inner">
             <div className="hero__copy">
               <p className="eyebrow eyebrow--hero"><span /> Home &amp; building maintenance</p>
@@ -65,8 +78,8 @@ export default function HomePage() {
                 Air-conditioning, electrical, plumbing, painting and general maintenance for homes and workspaces in Quoz, Dubai.
               </p>
               <div className="hero__actions">
-                <a className="button button--red" href={contact.phoneHref}>
-                  Call {contact.phone}<UiIcon name="arrow" />
+                <a className="button button--red" href={contact.phones[0].href}>
+                  Call {contact.phones[0].number}<UiIcon name="arrow" />
                 </a>
                 <a className="text-link" href="#services">Explore services <UiIcon name="arrow" /></a>
               </div>
@@ -118,53 +131,12 @@ export default function HomePage() {
               <p>Choose a service to ask about, or call and describe the job in your own words.</p>
             </div>
 
-            <div className="service-cards">
-              {services.map((service, index) => (
-                <article className="service-card reveal" key={service.title} style={{ "--reveal-index": index } as CSSProperties}>
-                  <div className="service-card__image">
-                    <Image
-                      src={service.image}
-                      alt={service.imageAlt}
-                      fill
-                      sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw"
-                      className="service-card__photo"
-                    />
-                  </div>
-                  <div className="service-card__content">
-                    <h3>{service.title}</h3>
-                    <p className="service-card__description">{service.description}</p>
-                    <div className="service-card__footer">
-                      <span>Ask about this service</span>
-                      <a className="service-card__link" href={whatsappHref} target="_blank" rel="noreferrer" aria-label={`Ask MAG about ${service.title}`}>
-                        <UiIcon name="arrow-up-right" />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <ServiceCarousel />
 
             <div className="services-footnote">
               <span>Need help choosing?</span>
-              <a href={contact.phoneHref}>Call {contact.phone} <UiIcon name="arrow" /></a>
+              <a href={contact.phones[0].href}>Call {contact.phones[0].number} <UiIcon name="arrow" /></a>
             </div>
-          </div>
-        </section>
-
-        <section className="brand-strip" aria-labelledby="brand-strip-title">
-          <div className="container brand-strip__inner">
-            <div className="brand-strip__copy">
-              <p className="eyebrow"><span /> Trusted brands</p>
-              <h2 id="brand-strip-title">A/C brands we service</h2>
-              <p>Ask about service and maintenance for your unit.</p>
-            </div>
-            <ul className="brand-strip__list" aria-label="Air-conditioning brands">
-              {airConditioningBrands.map((brand) => (
-                <li className={`brand-strip__name brand-strip__name--${brand.toLowerCase().replaceAll(" ", "-")}`} key={brand}>
-                  {brand}
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -192,6 +164,23 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="brand-strip" aria-labelledby="brand-strip-title">
+          <div className="container brand-strip__inner">
+            <div className="brand-strip__copy reveal">
+              <p className="eyebrow"><span /> Trusted brands</p>
+              <h2 id="brand-strip-title">A/C brands we service</h2>
+              <p>Ask about service and maintenance for your unit.</p>
+            </div>
+            <ul className="brand-strip__list" aria-label="Air-conditioning brands">
+              {airConditioningBrands.map((brand, index) => (
+                <li className={`brand-strip__name brand-strip__name--${brand.toLowerCase().replaceAll(" ", "-")} reveal`} key={brand} style={{ "--reveal-index": index } as CSSProperties}>
+                  {brand}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <div className="container contact-grid">
             <div className="contact-info">
@@ -205,11 +194,13 @@ export default function HomePage() {
               </div>
 
               <address className="contact-card reveal">
-                <a className="contact-item" href={contact.phoneHref}>
-                  <span className="contact-item__icon"><UiIcon name="phone" /></span>
-                  <span><small>Phone</small><strong>{contact.phone}</strong></span>
-                  <UiIcon name="arrow-up-right" />
-                </a>
+                {contact.phones.map((phone) => (
+                  <a className="contact-item" href={phone.href} key={phone.number}>
+                    <span className="contact-item__icon"><UiIcon name="phone" /></span>
+                    <span><small>Phone</small><strong>{phone.number}</strong></span>
+                    <UiIcon name="arrow-up-right" />
+                  </a>
+                ))}
                 <a className="contact-item" href={`mailto:${contact.email}`}>
                   <span className="contact-item__icon"><UiIcon name="mail" /></span>
                   <span><small>Email</small><strong>{contact.email}</strong></span>

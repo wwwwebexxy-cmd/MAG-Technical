@@ -20,7 +20,7 @@ export function SiteFooter() {
 
         <div className="footer-column footer-column--contact">
           <h2>Get in touch</h2>
-          <a href={contact.phoneHref}>{contact.phone}</a>
+          {contact.phones.map((phone) => <a key={phone.number} href={phone.href}>{phone.number}</a>)}
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
           <span>{contact.location}</span>
           <a href={contact.facebook} target="_blank" rel="noreferrer" className="facebook-link"><UiIcon name="facebook" /> Facebook</a>
