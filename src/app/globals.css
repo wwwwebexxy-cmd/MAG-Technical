@@ -209,6 +209,10 @@ button:focus-visible {
   transform: scaleX(1);
 }
 
+.primary-nav__phone {
+  display: none;
+}
+
 .header-call {
   display: flex;
   flex-direction: column;
@@ -660,21 +664,6 @@ button:focus-visible {
 
 .service-card:hover .service-card__photo {
   transform: scale(1.035);
-}
-
-.service-card__index {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  color: var(--blue-deep);
-  background: var(--white);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
 }
 
 .service-card__content {
@@ -1131,17 +1120,27 @@ button:focus-visible {
     display: none;
   }
 
-  .header-call {
-    min-height: 37px;
-    padding-left: 12px;
-  }
-
-  .header-call span {
-    font-size: 9px;
-  }
-
-  .header-call strong {
+  .primary-nav__phone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 13px 14px;
+    border: 1px solid var(--line) !important;
+    background: var(--blue-pale);
+    color: var(--ink) !important;
     font-size: 11px;
+    font-weight: 800;
+  }
+
+  .primary-nav__phone strong {
+    color: var(--blue-deep);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .header-call {
+    display: none;
   }
 
   .hero {
@@ -1299,6 +1298,11 @@ button:focus-visible {
     gap: 8px;
   }
 
+  .primary-nav {
+    right: -16px;
+    left: -16px;
+  }
+
   .brand {
     --brand-art-width: 180px;
     --brand-icon-width: 32px;
@@ -1306,18 +1310,6 @@ button:focus-visible {
     --brand-art-height: 42px;
     --brand-art-y: -5px;
     --brand-word-x: -32px;
-  }
-
-  .header-call {
-    padding-left: 9px;
-  }
-
-  .header-call span {
-    display: none;
-  }
-
-  .header-call strong {
-    font-size: 10px;
   }
 
   .menu-toggle {
@@ -1460,14 +1452,6 @@ button:focus-visible {
     --brand-art-height: 35px;
     --brand-art-y: -4px;
     --brand-word-x: -27px;
-  }
-
-  .header-call {
-    padding-left: 6px;
-  }
-
-  .header-call strong {
-    font-size: 9px;
   }
 
   .menu-toggle {

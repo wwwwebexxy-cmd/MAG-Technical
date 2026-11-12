@@ -93,7 +93,6 @@ export default function HomePage() {
                       sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw"
                       className="service-card__photo"
                     />
-                    <span className="service-card__index">0{index + 1}</span>
                   </div>
                   <div className="service-card__content">
                     <h3>{service.title}</h3>

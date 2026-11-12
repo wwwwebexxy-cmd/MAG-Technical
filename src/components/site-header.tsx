@@ -29,6 +29,9 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>
           ))}
+          <a className="primary-nav__phone" href={contact.phoneHref} onClick={() => setMenuOpen(false)}>
+            <span>Call us</span><strong>{contact.phone}</strong>
+          </a>
         </nav>
 
         <a className="header-call" href={contact.phoneHref}><span>Call us</span><strong>{contact.phone}</strong></a>
