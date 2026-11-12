@@ -32,6 +32,15 @@ const whyChooseItems = [
   },
 ] as const;
 
+const airConditioningBrands = [
+  "Daikin",
+  "Carrier",
+  "Mitsubishi Electric",
+  "LG",
+  "Samsung",
+  "O General",
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -139,6 +148,23 @@ export default function HomePage() {
               <span>Need help choosing?</span>
               <a href={contact.phoneHref}>Call {contact.phone} <UiIcon name="arrow" /></a>
             </div>
+          </div>
+        </section>
+
+        <section className="brand-strip" aria-labelledby="brand-strip-title">
+          <div className="container brand-strip__inner">
+            <div className="brand-strip__copy">
+              <p className="eyebrow"><span /> Trusted brands</p>
+              <h2 id="brand-strip-title">A/C brands we service</h2>
+              <p>Ask about service and maintenance for your unit.</p>
+            </div>
+            <ul className="brand-strip__list" aria-label="Air-conditioning brands">
+              {airConditioningBrands.map((brand) => (
+                <li className={`brand-strip__name brand-strip__name--${brand.toLowerCase().replaceAll(" ", "-")}`} key={brand}>
+                  {brand}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
