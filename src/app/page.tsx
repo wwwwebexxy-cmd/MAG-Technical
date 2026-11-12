@@ -5,6 +5,33 @@ import { SiteHeader } from "@/components/site-header";
 import { ServiceIcon, UiIcon } from "@/components/icons";
 import { contact, services, whatsappHref } from "@/lib/site-data";
 
+const whyChooseItems = [
+  {
+    label: "Direct contact",
+    title: "Speak with Mr Ambrose",
+    description: "Explain what needs attention and discuss your service enquiry directly.",
+    icon: "phone",
+  },
+  {
+    label: "Services together",
+    title: "One place for property work",
+    description: "Ask about A/C, electrical, plumbing, painting and general maintenance.",
+    icon: "arrow-up-right",
+  },
+  {
+    label: "Local base",
+    title: "Based in Quoz, Dubai",
+    description: "MAG Technical Services is based in Quoz and works with homes and workspaces.",
+    icon: "location",
+  },
+  {
+    label: "Easy enquiries",
+    title: "Choose how to get in touch",
+    description: "Call, email or send a WhatsApp message to start the conversation.",
+    icon: "mail",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -115,42 +142,95 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="why-section" aria-labelledby="why-title">
+          <div className="container">
+            <div className="why-heading reveal">
+              <div>
+                <p className="eyebrow"><span /> Why MAG</p>
+                <h2 id="why-title">Why choose <em>MAG?</em></h2>
+              </div>
+              <p>Practical maintenance support, with a direct point of contact in Quoz.</p>
+            </div>
+            <div className="why-grid">
+              {whyChooseItems.map((item, index) => (
+                <article className="why-card reveal" key={item.label} style={{ "--reveal-index": index } as CSSProperties}>
+                  <div className="why-card__top">
+                    <span className="why-card__icon"><UiIcon name={item.icon} /></span>
+                    <span className="why-card__label">{item.label}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <div className="container contact-grid">
-            <div className="contact-copy reveal">
-              <p className="eyebrow eyebrow--light"><span /> Contact</p>
-              <h2 id="contact-title">Tell us what needs <em>attention.</em></h2>
-              <p>Call or message {contact.name} to talk through your service request.</p>
-              <a className="button button--light" href={whatsappHref} target="_blank" rel="noreferrer">
-                Start a WhatsApp chat <UiIcon name="arrow-up-right" />
-              </a>
+            <div className="contact-info">
+              <div className="contact-copy reveal">
+                <p className="eyebrow eyebrow--light"><span /> Contact</p>
+                <h2 id="contact-title">Tell us what needs <em>attention.</em></h2>
+                <p>Call or message {contact.name} to talk through your service request.</p>
+                <a className="button button--light" href={whatsappHref} target="_blank" rel="noreferrer">
+                  Start a WhatsApp chat <UiIcon name="arrow-up-right" />
+                </a>
+              </div>
+
+              <address className="contact-card reveal">
+                <a className="contact-item" href={contact.phoneHref}>
+                  <span className="contact-item__icon"><UiIcon name="phone" /></span>
+                  <span><small>Phone</small><strong>{contact.phone}</strong></span>
+                  <UiIcon name="arrow-up-right" />
+                </a>
+                <a className="contact-item" href={`mailto:${contact.email}`}>
+                  <span className="contact-item__icon"><UiIcon name="mail" /></span>
+                  <span><small>Email</small><strong>{contact.email}</strong></span>
+                  <UiIcon name="arrow-up-right" />
+                </a>
+                <div className="contact-item contact-item--static">
+                  <span className="contact-item__icon"><UiIcon name="location" /></span>
+                  <span><small>Location</small><strong>{contact.location}</strong></span>
+                </div>
+                <div className="contact-card__footer">
+                  <span>Company contact</span>
+                  <strong>{contact.name}</strong>
+                </div>
+              </address>
             </div>
 
-            <address className="contact-card reveal">
-              <a className="contact-item" href={contact.phoneHref}>
-                <span className="contact-item__icon"><UiIcon name="phone" /></span>
-                <span><small>Phone</small><strong>{contact.phone}</strong></span>
-                <UiIcon name="arrow-up-right" />
-              </a>
-              <a className="contact-item" href={`mailto:${contact.email}`}>
-                <span className="contact-item__icon"><UiIcon name="mail" /></span>
-                <span><small>Email</small><strong>{contact.email}</strong></span>
-                <UiIcon name="arrow-up-right" />
-              </a>
-              <div className="contact-item contact-item--static">
-                <span className="contact-item__icon"><UiIcon name="location" /></span>
-                <span><small>Location</small><strong>{contact.location}</strong></span>
+            <div className="contact-map reveal">
+              <div className="contact-map__heading">
+                <span>Find us in Quoz</span>
+                <strong>{contact.location}</strong>
               </div>
-              <div className="contact-card__footer">
-                <span>Company contact</span>
-                <strong>{contact.name}</strong>
-              </div>
-            </address>
+              <iframe
+                className="contact-map__frame"
+                title="Map showing Quoz, Dubai"
+                src="https://maps.google.com/maps?q=Quoz%2C%20Dubai&z=12&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </section>
       </main>
 
       <SiteFooter />
+      <div className="floating-actions" aria-label="Quick contact and page navigation">
+        <a className="floating-action floating-action--whatsapp" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Contact MAG Technical Services on WhatsApp">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path d="M16 3.2a12.5 12.5 0 0 0-10.7 19L3.8 28l6-1.6A12.5 12.5 0 1 0 16 3.2Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M12.1 8.6c-.3-.5-.6-.5-.9-.5h-.7c-.3 0-.6.1-.9.5-.3.4-1.1 1.1-1.1 2.7 0 1.5 1.1 3 1.3 3.2.2.2 2.2 3.5 5.3 4.7 2.6 1 3.2.8 3.8.8.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.7-.4l-2.2-1.1c-.3-.1-.5-.2-.7.2-.2.2-.8 1-1 1.2-.2.2-.4.2-.7 0-.4-.2-1.5-.6-2.8-1.8-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2.1-.5 0-.7l-1-2.4Z" fill="currentColor" />
+          </svg>
+        </a>
+        <a className="floating-action floating-action--top" href="#home" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 19V5m-7 7 7-7 7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+      </div>
     </>
   );
 }

@@ -17,11 +17,11 @@ export function SiteHeader() {
         <button
           className="menu-toggle"
           type="button"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
           onClick={() => setMenuOpen((open) => !open)}
         >
-          <span>{menuOpen ? "Close" : "Menu"}</span>
           <span className={`menu-toggle__icon${menuOpen ? " is-open" : ""}`} aria-hidden="true"><i /><i /></span>
         </button>
 
