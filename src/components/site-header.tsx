@@ -11,7 +11,7 @@ export function SiteHeader() {
       <div className="container site-header__inner">
         <a className="brand" href="#home" aria-label="MAG Technical Services home" onClick={() => setMenuOpen(false)}>
           <span className="brand__mark" aria-hidden="true" />
-          <span className="brand__wordmark"><strong>MAG</strong><small>Technical Services</small></span>
+          <span className="brand__wordmark" aria-hidden="true" />
         </a>
 
         <button

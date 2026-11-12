@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className="footer-brand-block">
           <a className="brand brand--footer" href="#home" aria-label="MAG Technical Services home">
             <span className="brand__mark" aria-hidden="true" />
-            <span className="brand__wordmark"><strong>MAG</strong><small>Technical Services</small></span>
+            <span className="brand__wordmark" aria-hidden="true" />
           </a>
           <p>Air-conditioning, electrical, plumbing, painting and general maintenance in Quoz, Dubai.</p>
         </div>
