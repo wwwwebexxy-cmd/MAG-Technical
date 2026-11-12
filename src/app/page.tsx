@@ -19,42 +19,33 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="main-content">
-        <section className="hero container" id="home" aria-labelledby="hero-title">
-          <div className="hero__copy">
-            <p className="eyebrow"><span /> Home &amp; building maintenance</p>
-            <h1 id="hero-title">Cool rooms.<br />Reliable <em>repairs.</em></h1>
-            <p className="hero__intro">
-              Air-conditioning, electrical, plumbing, painting and general maintenance for homes and workspaces in Quoz, Dubai.
-            </p>
-            <div className="hero__actions">
-              <a className="button button--red" href={contact.phoneHref}>
-                Call {contact.phone}<UiIcon name="arrow" />
-              </a>
-              <a className="text-link" href="#services">Explore services <UiIcon name="arrow" /></a>
+        <section className="hero" id="home" aria-labelledby="hero-title">
+          <Image src="/images/ac-technician-dubai.png" alt="" fill priority sizes="100vw" className="hero__image" />
+          <div className="container hero__inner">
+            <div className="hero__copy">
+              <p className="eyebrow eyebrow--hero"><span /> Home &amp; building maintenance</p>
+              <h1 id="hero-title">Cool rooms.<br />Reliable <em>repairs.</em></h1>
+              <p className="hero__intro">
+                Air-conditioning, electrical, plumbing, painting and general maintenance for homes and workspaces in Quoz, Dubai.
+              </p>
+              <div className="hero__actions">
+                <a className="button button--red" href={contact.phoneHref}>
+                  Call {contact.phone}<UiIcon name="arrow" />
+                </a>
+                <a className="text-link" href="#services">Explore services <UiIcon name="arrow" /></a>
+              </div>
+              <div className="hero__details">
+                <span className="hero__rule" />
+                <p><strong>Speak directly with {contact.name}</strong><br />For a service enquiry or a quote.</p>
+              </div>
             </div>
-            <div className="hero__details">
-              <span className="hero__rule" />
-              <p><strong>Speak directly with {contact.name}</strong><br />For a service enquiry or a quote.</p>
-            </div>
-          </div>
 
-          <figure className="hero__visual">
-            <Image
-              src="/images/ac-technician-dubai.png"
-              alt="A technician servicing a split air conditioner in a Dubai apartment"
-              fill
-              priority
-              sizes="(max-width: 760px) 100vw, 52vw"
-              className="hero__image"
-            />
             <div className="hero__photo-label">
               <span className="photo-label__icon"><ServiceIcon name="air" /></span>
-              <span><strong>Air-conditioning</strong><small>Service · Installation · Maintenance</small></span>
+              <span><strong>Air-conditioning</strong><small>Service / Installation / Maintenance</small></span>
             </div>
-            <figcaption className="hero__location"><UiIcon name="location" /> Quoz, Dubai</figcaption>
-          </figure>
-
-          <div className="hero__index" aria-hidden="true">MAG / 01</div>
+            <p className="hero__location"><UiIcon name="location" /> Quoz, Dubai</p>
+          </div>
         </section>
 
         <section className="about-section" id="about" aria-labelledby="about-title">
@@ -105,7 +96,6 @@ export default function HomePage() {
                     <span className="service-card__index">0{index + 1}</span>
                   </div>
                   <div className="service-card__content">
-                    <p className="service-card__label">MAG Technical Services</p>
                     <h3>{service.title}</h3>
                     <p className="service-card__description">{service.description}</p>
                     <div className="service-card__footer">
